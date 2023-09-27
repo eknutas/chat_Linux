@@ -5,23 +5,23 @@
 int SConnect::sconnection()
 {
     std::string str;
-	// Создадим сокет
+	// Create a socket
     sockert_file_descriptor = socket(AF_INET, SOCK_STREAM, 0);
     if (SConnect::sockert_file_descriptor == -1) {
 		throw "Socket creation failed!";
     }
     serveraddress.sin_addr.s_addr = htonl(INADDR_ANY);
-    // Зададим номер порта для связи
+    // Define the port number for communication
     serveraddress.sin_port = htons(PORT);
-    // Используем IPv4
+    // Using IPv4
     serveraddress.sin_family = AF_INET;
-    // Привяжем сокет
+    // Bind the socket
     bind_status = bind(sockert_file_descriptor, (struct sockaddr*)&serveraddress,
         sizeof(serveraddress));
     if (bind_status == -1) {
 		throw "Socket binding failed!";
     }
-    // Поставим сервер на прием данных
+    // Puts a server to receive the data
     connection_status = listen(sockert_file_descriptor, 5);
     if (connection_status == -1) {
 		throw "Socket is unable to listen for new connections!";
