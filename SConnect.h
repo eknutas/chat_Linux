@@ -9,7 +9,7 @@
 class SConnect
 {
 private:
-	#define PORT 7777 // Будем использовать этот номер порта
+	#define PORT 7777 // Will use this port number
 	struct sockaddr_in serveraddress, client;
 	socklen_t length;
 	
