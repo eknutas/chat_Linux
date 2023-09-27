@@ -46,11 +46,11 @@ void threadChat()
                 NS::chat.checkIn();
                 break;
             case '3':   // Exiting the program
-				// Закрываем соединение с базой данных
+				// Close the connection to the database
 				NS::chat.mysqlclose();
                 NS::chat.socketWrite("Goodbye!");
 				NS::log.writelog("Exit");
-                // Закрываем сокет, завершаем соединение
+                // Close the socket, terminate the connection
                 close(NS::sconn.sockert_file_descriptor);
 				return;
             default:
@@ -94,6 +94,6 @@ int main()
     if (thrCht.joinable()) {
             thrCht.join();
     }
-    NS::log.user_file.close();  // Закрываем файл
+    NS::log.user_file.close();  // Close the file
     return 0;
 }
